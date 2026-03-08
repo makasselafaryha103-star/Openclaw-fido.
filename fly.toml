@@ -1,0 +1,22 @@
+app = "openclaw-fly"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  OPENAI_API_KEY = ""
+  ANTHROPIC_API_KEY = ""
+
+[experimental]
+  auto_rollback = true
+
+[services]
+  [[services]]
+    internal_port = 18789
+    protocol = "tcp"
+    [[services.ports]]
+      port = 80
+      handlers = ["http"]
+    [[services.ports]]
+      port = 443
+      handlers = ["tls", "http"]
